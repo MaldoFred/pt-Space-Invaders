@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Space-Invaders</title>
+    <link rel="stylesheet" href="styles/styles.css" type="text/css" media="screen"/>
 
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <img src="./images/logo.png" alt="" style="width:30%;" />
+    <br />
+    <div id="game-board">
+      <canvas id="my-canvas" width="700" height="600"></canvas>
+    </div>
+
+    <div id="butons">
+        <button id="start-button">StartGame</button>
+        <button id="instructions">instructions</button>
+
+
+    </div>
+
+    <script src="js/defaultVars.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script src="js/classes.js"></script>
+  </body>
 </html>

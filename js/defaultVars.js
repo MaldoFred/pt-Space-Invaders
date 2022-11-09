@@ -6,9 +6,11 @@ const ctx = canvas.getContext("2d") //llamar canvas
 let bgCanvas= new Image();
 bgCanvas.src="../images/bg.jpg";
 
+let missilesArray = [];
+
+
 let frames = 0; // tiempo para cambio de nivel
 
-const pipes = []; // arreglo de enemigos
 
 let points = 0; // puntos acomulados
 

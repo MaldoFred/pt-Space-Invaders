@@ -29,8 +29,8 @@ class Spacecraft1 {
     constructor(x, y, w, h) {
         this.x = x;
         this.y = y;
-        this.width = w;
-        this.height = h;
+        this.w = w;
+        this.h = h;
         this.image = new Image();
         this.image.src = "images/spacecraft1.png"
 
@@ -40,7 +40,7 @@ class Spacecraft1 {
         missilesArray.push({ x: this.x + 40, y: this.y, w: 3, h: 10 });
     }
     update() {
-        ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
+        ctx.drawImage(this.image, this.x, this.y, this.w, this.h)
     }
 
 
@@ -51,13 +51,13 @@ class Spacecraft1 {
 // Enemys 1
 
 class Enemy1 {
-    constructor(x, y, w, h) {
+    constructor(x, y, w, h,img) {
         this.x = x;
         this.y = y;
         this.width = w;
         this.height = h;
         this.image = new Image();
-        this.image.src = "images/enemy1.png"
+        this.image.src = img
 
     }
 
@@ -67,7 +67,14 @@ class Enemy1 {
     }
 
 
-    collistion() { }
+collision(item){
+        return(
+            this.x < item.x + item.w &&
+            this.x + this.width > item.x &&
+            this.y < item.y + item.h &&
+            this.y + this.height > item.y
+        )
+        }
 }
 
 

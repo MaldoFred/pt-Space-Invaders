@@ -21,67 +21,55 @@ window.onload = function () {
             return
         }
         const x = Math.floor(Math.random() * (600 - 20) + 20)
-        const enemy = new Enemy1(x, -80, 80, 80)
+        const img=frames %160 == 0? "images/enemy1.png":"images/enemy2.png"
+        const enemy = new Enemy1(x, -80, 80, 80,img)
         anemy1Array.push(enemy)
 
 
     }
     function drawEnemy1() {
         anemy1Array.forEach((enemy, index_e) => {
-            if(enemy.y>=520){
-                let image = new Image();
-                image.src="images/gameOver.jpg";
-                bg.image= image;
-                bg.update();
+            if (enemy.y >= 520) {
+                gameOver()
             }
+
             enemy.update()
+            missilesArray.forEach((misil, index_m) => {
+                ctx.fillStyle = "#90F50E";
+                ctx.fillRect(misil.x, misil.y -= 2, misil.w, misil.h);
+                if (enemy.collision(misil)) {
+                    anemy1Array.splice(index_e, 1)
+                    missilesArray.splice(index_m, 1)
+                }
+            });
+            if (enemy.collision(spacecraft1)) { 
+                gameOver()
+            }
         })
     }
 
-    function generateEnemys2() {
-        if (!(frames % 600 == 0)) {
-            return
-        }
-        const x = Math.floor(Math.random() * (600 - 20) + 20)
-        const enemy = new Enemy2(x, -80, 80, 80)
-        anemy2Array.push(enemy)
 
-
-    }
-    function drawEnemy2() {
-        anemy2Array.forEach((enemy, index_e) => {
-            if(enemy.y>=520){
-                let image = new Image();
-                image.src="images/gameOver.jpg";
-                bg.image= image;
-                bg.update();
-            }
-            enemy.update()
-        })
-
-    }
-
-
-    function mostrarMas() {
-
-    }
 
     // start-button
     document.getElementById("start-button").onclick = function () {
-        startGame();
-        setInterval(updateGame, 6);
+        if (!requestId) {
+            requestId = setInterval(updateGame, 6);
+
+        }
     };
 
-    function startGame() {
-        1
-
-
-        //ejecuta updateGame
-        updateGame()
-    }
 
     function gameOver() {
-
+        let image = new Image();
+                image.src="images/gameOver.jpg";
+                bg.image= image;
+                bg.update();
+                setTimeout(() => {
+                    clearInterval(requestId)
+        console.log("game over");
+        requestId = undefined
+                }, 1500);
+                
     }
     // instructions
 
@@ -93,25 +81,16 @@ window.onload = function () {
         bg.update();
 
         generateEnemys1();
-        generateEnemys2();
 
         drawEnemy1();
 
-        drawEnemy2();
-        missilesArray.forEach((misil) => {
-            ctx.fillStyle = "#90F50E";
-            ctx.fillRect(misil.x, misil.y -= 2, misil.w, misil.h);
 
-        });
 
         spacecraft1.update();
-        //     enemy1.update();
-        //     enemy2.update();
+
     }
 
 
-    // addEventListener 
-    //addEventListener()
     this.addEventListener("keydown", function (event) {
         if (event.keyCode == '37') {//Tecla con la flecha hacia la izquierda		
             //alert('izquierda');
@@ -119,7 +98,7 @@ window.onload = function () {
 
             if (spacecraft1.x >= 0) {
 
-                spacecraft1.x -= 6;
+                spacecraft1.x -= 10;
             }
         }
 
@@ -127,7 +106,7 @@ window.onload = function () {
             // alert('derecha =)');
             console.log(spacecraft1.x)
             if (spacecraft1.x <= canvas.width - 80) {
-                spacecraft1.x += 6;
+                spacecraft1.x += 10;
 
 
             }

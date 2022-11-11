@@ -5,10 +5,7 @@ window.onload = function () {
     //llamar clase
     const bg = new Background(canvas.widht, canvas.height);
     const spacecraft1 = new Spacecraft1(300, 500, 80, 80);
-    const enemy1 = new Enemy1(300, -80, 80, 80);
-    const enemy2 = new Enemy2(100, -80, 80, 80);
     let anemy1Array = []
-    let anemy2Array = []
 
 
     // function launchermissiles(){
@@ -21,8 +18,8 @@ window.onload = function () {
             return
         }
         const x = Math.floor(Math.random() * (600 - 20) + 20)
-        const img=frames %160 == 0? "images/enemy1.png":"images/enemy2.png"
-        const enemy = new Enemy1(x, -80, 80, 80,img)
+        const img = frames % 160 == 0 ? "images/enemy1.png" : "images/enemy2.png"
+        const enemy = new Enemy1(x, -80, 80, 80, img)
         anemy1Array.push(enemy)
 
 
@@ -40,10 +37,14 @@ window.onload = function () {
                 if (enemy.collision(misil)) {
                     anemy1Array.splice(index_e, 1)
                     missilesArray.splice(index_m, 1)
+                    points += 10
                 }
             });
-            if (enemy.collision(spacecraft1)) { 
+            if (enemy.collision(spacecraft1)) {
                 gameOver()
+            }
+            if (points >= 100) {
+                winner()
             }
         })
     }
@@ -57,21 +58,37 @@ window.onload = function () {
 
         }
     };
+    document.getElementById("Reset").onclick = function () {
+        console.log("Reset");
+        window.location.reload()
+    };
 
 
     function gameOver() {
         let image = new Image();
-                image.src="images/gameOver.jpg";
-                bg.image= image;
-                bg.update();
-                setTimeout(() => {
-                    clearInterval(requestId)
-        console.log("game over");
-        requestId = undefined
-                }, 1500);
-                
+        image.src = "images/gameOver.jpg";
+        bg.image = image;
+        bg.update();
+        setTimeout(() => {
+            clearInterval(requestId)
+            console.log("game over");
+            requestId = undefined
+        }, 1500);
+
     }
-    // instructions
+
+    function winner() {
+
+        let image = new Image();
+        image.src = "images/winner.png";
+        bg.image = image;
+        bg.update();
+        setTimeout(() => {
+            clearInterval(requestId)
+            console.log("you winner");
+            requestId = undefined
+        }, 1500);
+    }
 
 
 

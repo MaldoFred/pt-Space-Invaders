@@ -1,10 +1,12 @@
 // variables globales
 
-const canvas = document.getElementById ("my-canvas");
+const canvas = document.getElementById("my-canvas");
 const ctx = canvas.getContext("2d") //llamar canvas
+const divPoin = document.getElementById("points")
+ctx.font = "50px"
 
-let bgCanvas= new Image();
-bgCanvas.src="../images/bg.jpg";
+let bgCanvas = new Image();
+bgCanvas.src = "../images/bg.jpg";
 
 let missilesArray = [];
 

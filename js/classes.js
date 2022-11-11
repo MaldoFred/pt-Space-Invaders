@@ -11,20 +11,15 @@ class Background {
         //imagen de fondo
         this.image = new Image();
         this.image.src = "images/bg.jpg";
-
     }
 
     update() {
-
-
-
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
-
+        divPoin.innerHTML = "points:" + points;
     }
 }
 
 //spacecraft
-
 class Spacecraft1 {
     constructor(x, y, w, h) {
         this.x = x;
@@ -33,73 +28,60 @@ class Spacecraft1 {
         this.h = h;
         this.image = new Image();
         this.image.src = "images/spacecraft1.png"
-
     }
 
     launchermissiles() {
         missilesArray.push({ x: this.x + 40, y: this.y, w: 3, h: 10 });
     }
     update() {
-        ctx.drawImage(this.image, this.x, this.y, this.w, this.h)
+        ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
     }
-
-
-    collistion() { }
 }
-
 
 // Enemys 1
 
 class Enemy1 {
-    constructor(x, y, w, h,img) {
+    constructor(x, y, w, h, img) {
         this.x = x;
         this.y = y;
         this.width = w;
         this.height = h;
         this.image = new Image();
-        this.image.src = img
+        this.image.src = img;
 
     }
 
     update() {
-        ctx.drawImage(this.image, this.x, this.y += .3, this.width, this.height)
+        ctx.drawImage(this.image, this.x, this.y += .5, this.width, this.height)
 
     }
 
-
-collision(item){
-        return(
+    collision(item) {
+        return (
             this.x < item.x + item.w &&
             this.x + this.width > item.x &&
             this.y < item.y + item.h &&
             this.y + this.height > item.y
         )
-        }
+    }
 }
-
-
 
 // Enemys 1
+// class Enemy2 {
+//     constructor(x, y, w, h) {
+//         this.x = x;
+//         this.y = y;
+//         this.width = w;
+//         this.height = h;
+//         this.image = new Image();
+//         this.image.src = "images/enemy2.png"
 
-class Enemy2 {
-    constructor(x, y, w, h) {
-        this.x = x;
-        this.y = y;
-        this.width = w;
-        this.height = h;
-        this.image = new Image();
-        this.image.src = "images/enemy2.png"
+//     }
 
-    }
+//     update() {
+//         ctx.drawImage(this.image, this.x, this.y += .3, this.width, this.height)
+//     }
 
-
-
-    update() {
-        ctx.drawImage(this.image, this.x, this.y += .3, this.width, this.height)
-    }
-
-
-    collistion() { }
-}
+// }
 
 

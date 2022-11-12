@@ -38,8 +38,6 @@ class Spacecraft1 {
     }
 }
 
-// Enemys 1
-
 class Enemy1 {
     constructor(x, y, w, h, img) {
         this.x = x;
@@ -66,22 +64,6 @@ class Enemy1 {
     }
 }
 
-// Enemys 1
-// class Enemy2 {
-//     constructor(x, y, w, h) {
-//         this.x = x;
-//         this.y = y;
-//         this.width = w;
-//         this.height = h;
-//         this.image = new Image();
-//         this.image.src = "images/enemy2.png"
 
-//     }
-
-//     update() {
-//         ctx.drawImage(this.image, this.x, this.y += .3, this.width, this.height)
-//     }
-
-// }
 
 

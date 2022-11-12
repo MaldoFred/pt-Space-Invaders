@@ -7,12 +7,6 @@ window.onload = function () {
     const spacecraft1 = new Spacecraft1(300, 500, 80, 80);
     let anemy1Array = []
 
-
-    // function launchermissiles(){
-
-    // }
-
-
     function generateEnemys1() {
         if (!(frames % 400 == 0)) {
             return
@@ -21,7 +15,6 @@ window.onload = function () {
         const img = frames % 160 == 0 ? "images/enemy1.png" : "images/enemy2.png"
         const enemy = new Enemy1(x, -80, 80, 80, img)
         anemy1Array.push(enemy)
-
 
     }
     function drawEnemy1() {
@@ -49,8 +42,6 @@ window.onload = function () {
         })
     }
 
-
-
     // start-button
     document.getElementById("start-button").onclick = function () {
         if (!requestId) {
@@ -58,11 +49,11 @@ window.onload = function () {
 
         }
     };
+    // reset
     document.getElementById("Reset").onclick = function () {
         console.log("Reset");
         window.location.reload()
     };
-
 
     function gameOver() {
         let image = new Image();
@@ -90,8 +81,6 @@ window.onload = function () {
         }, 1500);
     }
 
-
-
     function updateGame() { // actualizar juego
         frames++;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -101,12 +90,8 @@ window.onload = function () {
 
         drawEnemy1();
 
-
-
         spacecraft1.update();
-
     }
-
 
     this.addEventListener("keydown", function (event) {
         if (event.keyCode == '37') {//Tecla con la flecha hacia la izquierda		
@@ -150,14 +135,4 @@ window.onload = function () {
 
         console.log(event.keyCode);
     })
-    // Missil
-    // document.addEventListener("clic",()=>{
-    //     missil.classList.add("missil");
-    //     missil.style.bottom=80+"px"
-    //     missil.style.left=(Spacecraft1.getBoundingClientRect().left+40)+"px";
-    //     body.append(missil);
-    // })
-
-
-
 };

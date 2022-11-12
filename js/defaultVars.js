@@ -10,16 +10,11 @@ bgCanvas.src = "../images/bg.jpg";
 
 let missilesArray = [];
 
-
 let frames = 0; // tiempo para cambio de nivel
-
 
 let points = 0; // puntos acomulados
 
 let levelHard = 1; // dificultad de juego
-
-const audio = new Audio()
-// audio.src = "";  efecto
 
 let requestId; //para validar que mi juego esta corriendo
 
